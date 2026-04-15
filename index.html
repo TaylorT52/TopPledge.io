@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Top Pledge Leaderboard</title>
+  <title>Top Pledge</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&amp;family=Outfit:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -140,7 +140,7 @@
       display: grid;
       gap: 28px;
       align-items: end;
-      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+      grid-template-columns: minmax(0, 1fr);
       margin-top: 22px;
     }
 
@@ -215,36 +215,6 @@
       opacity: 0.72;
     }
 
-    .hero__stats {
-      display: grid;
-      gap: 14px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .stat-card {
-      padding: 18px;
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(143, 91, 101, 0.12);
-      box-shadow: 0 10px 24px rgba(120, 70, 82, 0.08);
-      backdrop-filter: blur(10px);
-    }
-
-    .stat-card__value {
-      display: block;
-      font-size: clamp(1.35rem, 3vw, 2.1rem);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-    }
-
-    .stat-card__label {
-      display: block;
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
     .layout {
       display: grid;
       gap: 24px;
@@ -253,8 +223,7 @@
     }
 
     .podium-panel,
-    .leaderboard-panel,
-    .setup-panel {
+    .leaderboard-panel {
       padding: clamp(20px, 4vw, 28px);
       border-radius: 28px;
       background: rgba(255, 250, 244, 0.72);
@@ -469,52 +438,6 @@
       line-height: 1.6;
     }
 
-    .setup-panel {
-      display: none;
-    }
-
-    .setup-panel.is-visible {
-      display: block;
-    }
-
-    details {
-      overflow: hidden;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.64);
-      border: 1px solid rgba(143, 91, 101, 0.12);
-    }
-
-    summary {
-      cursor: pointer;
-      list-style: none;
-      padding: 18px 20px;
-      font-weight: 700;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .setup-content {
-      padding: 0 20px 20px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .setup-content p,
-    .setup-content ol {
-      margin: 0 0 14px;
-    }
-
-    .setup-content code {
-      padding: 2px 6px;
-      border-radius: 6px;
-      background: rgba(31, 23, 32, 0.08);
-      color: var(--ink);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size: 0.95em;
-    }
-
     .status-text {
       color: var(--muted);
       font-size: 0.95rem;
@@ -560,10 +483,6 @@
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .hero__stats {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
       .podium {
         grid-template-columns: 1fr;
       }
@@ -585,10 +504,6 @@
 
       .hero {
         border-radius: 28px;
-      }
-
-      .hero__stats {
-        grid-template-columns: 1fr;
       }
 
       .section-title {
@@ -617,15 +532,12 @@
     <header class="hero">
       <div class="eyebrow">
         <span class="eyebrow__dot"></span>
-        <span id="eyebrow-label">Spring 2026 / Sorority Fundraiser</span>
+        <span id="eyebrow-label">Spring 2026</span>
       </div>
 
       <div class="hero__grid">
         <div>
-          <h1 class="hero__title" id="page-title">Top Pledge Leaderboard</h1>
-          <p class="hero__copy" id="page-subtitle">
-            Live rankings for your top pledge competition, automatically sorted by the highest total.
-          </p>
+          <h1 class="hero__title" id="page-title">Top Pledge</h1>
 
           <div class="hero__actions">
             <div class="badge" id="data-source-badge">
@@ -637,25 +549,6 @@
 
           <div class="notice" id="status-notice"></div>
         </div>
-
-        <div class="hero__stats">
-          <article class="stat-card">
-            <span class="stat-card__value" id="leader-name">-</span>
-            <span class="stat-card__label">Current leader</span>
-          </article>
-          <article class="stat-card">
-            <span class="stat-card__value" id="total-score">-</span>
-            <span class="stat-card__label" id="total-label">Total raised</span>
-          </article>
-          <article class="stat-card">
-            <span class="stat-card__value" id="entrant-count">0</span>
-            <span class="stat-card__label">Competitors</span>
-          </article>
-          <article class="stat-card">
-            <span class="stat-card__value" id="last-updated">-</span>
-            <span class="stat-card__label">Last synced</span>
-          </article>
-        </div>
       </div>
     </header>
 
@@ -664,7 +557,6 @@
         <div class="section-title">
           <div>
             <h2>Front Runners</h2>
-            <p>The top three update automatically whenever the connected sheet changes.</p>
           </div>
           <div class="status-text" id="podium-status">Waiting for rankings...</div>
         </div>
@@ -675,42 +567,24 @@
         <div class="section-title">
           <div>
             <h2>Full Leaderboard</h2>
-            <p>Sorted highest to lowest with a live progress bar against the current leader.</p>
           </div>
         </div>
         <div class="leaderboard-list" id="leaderboard-list"></div>
-      </section>
-
-      <section class="setup-panel" id="setup-panel">
-        <details>
-          <summary>Google Sheets Setup</summary>
-          <div class="setup-content">
-            <p>To make this leaderboard live, use either <code>Name</code> + <code>Points</code> or <code>First Name</code> + <code>Last Name</code> + <code>Points</code>. An optional <code>Note</code> column still works too.</p>
-            <ol>
-              <li>Put your pledge names and totals into a Google Sheet.</li>
-              <li>Make the sheet public or use <code>File &gt; Share &gt; Publish to web</code> so the browser can read it.</li>
-              <li>Open this file and paste either your normal Google Sheets link into <code>CONFIG.googleSheet.sheetUrl</code> or a published CSV link into <code>CONFIG.googleSheet.publishedCsvUrl</code>.</li>
-              <li>Host the page with GitHub Pages, Netlify, or any simple web server so the browser can fetch the sheet.</li>
-            </ol>
-            <p>If you would rather show dollars later, switch <code>scoreFormat</code> back to <code>"currency"</code> and update <code>scoreLabel</code>.</p>
-          </div>
-        </details>
       </section>
     </main>
   </div>
 
   <script>
     const CONFIG = {
-      eyebrowLabel: "Spring 2026 / Sorority Fundraiser",
-      competitionName: "Top Pledge Leaderboard",
-      subtitle: "Live rankings for your top pledge competition, automatically sorted by the highest point total.",
+      eyebrowLabel: "Spring 2026",
+      competitionName: "Top Pledge",
+      subtitle: "",
       scoreLabel: "Points",
       scoreFormat: "number",
       autoRefreshMs: 30000,
       currency: "USD",
       scorePrefix: "",
       scoreSuffix: "",
-      showSetupGuide: true,
       googleSheet: {
         // Easiest option: paste your normal Google Sheets share link here.
         sheetUrl: "https://docs.google.com/spreadsheets/d/1c0yh7x020cC3VVxcdPeqQYJC-cPG5Qf2X-sYW5vl3Kg/edit?usp=sharing",
@@ -744,18 +618,11 @@
     const elements = {
       eyebrowLabel: document.getElementById("eyebrow-label"),
       pageTitle: document.getElementById("page-title"),
-      pageSubtitle: document.getElementById("page-subtitle"),
-      totalLabel: document.getElementById("total-label"),
       dataSourceLabel: document.getElementById("data-source-label"),
-      leaderName: document.getElementById("leader-name"),
-      totalScore: document.getElementById("total-score"),
-      entrantCount: document.getElementById("entrant-count"),
-      lastUpdated: document.getElementById("last-updated"),
       podiumStatus: document.getElementById("podium-status"),
       podium: document.getElementById("podium"),
       leaderboardList: document.getElementById("leaderboard-list"),
       refreshButton: document.getElementById("refresh-button"),
-      setupPanel: document.getElementById("setup-panel"),
       statusNotice: document.getElementById("status-notice")
     };
 
@@ -763,9 +630,6 @@
       document.title = CONFIG.competitionName;
       elements.eyebrowLabel.textContent = CONFIG.eyebrowLabel;
       elements.pageTitle.textContent = CONFIG.competitionName;
-      elements.pageSubtitle.textContent = CONFIG.subtitle;
-      elements.totalLabel.textContent = `Total ${CONFIG.scoreLabel.toLowerCase()}`;
-      elements.setupPanel.classList.toggle("is-visible", CONFIG.showSetupGuide);
 
       if (location.protocol === "file:") {
         showNotice("Live Google Sheets sync works best when this page is served through a local server or hosted site instead of opening the file directly.");
@@ -1037,7 +901,7 @@
           : parseNumber(rawScore);
 
         return {
-          name: fullName || combinedName || fallbackName,
+          name: combinedName || fullName || fallbackName,
           score,
           note: safeNoteIndex >= 0 ? (row[safeNoteIndex] || "").trim() : ""
         };
@@ -1089,6 +953,10 @@
       return `${minutes}m`;
     }
 
+    function formatRank(entry) {
+      return entry.score > 0 ? String(entry.rank) : "--";
+    }
+
     function escapeHtml(value) {
       return String(value)
         .replace(/&/g, "&amp;")
@@ -1122,7 +990,7 @@
 
       elements.podium.innerHTML = ordered.map((entry) => `
         <article class="podium-card podium-card--${entry.rank}">
-          <div class="podium-card__rank">${entry.rank}</div>
+          <div class="podium-card__rank">${formatRank(entry)}</div>
           <h3 class="podium-card__name">${escapeHtml(entry.name)}</h3>
           <div class="podium-card__score">${formatScore(entry.score)}</div>
           <div class="podium-card__note">${escapeHtml(entry.note || `Currently ranked #${entry.rank}`)}</div>
@@ -1143,20 +1011,21 @@
       const topScore = entries[0].score || 1;
 
       elements.leaderboardList.innerHTML = entries.map((entry) => {
-        const progress = Math.max(12, Math.round((entry.score / topScore) * 100));
-        const detail = entry.note || `${CONFIG.scoreLabel} total`;
+        const leaderPercent = Math.round((entry.score / topScore) * 100);
+        const progress = entry.score > 0 ? Math.max(12, leaderPercent) : 0;
+        const detail = entry.note || (entry.score > 0 ? `${CONFIG.scoreLabel} total` : "No points yet");
 
         return `
           <article class="leaderboard-row">
-            <div class="leaderboard-row__rank">${entry.rank}</div>
+            <div class="leaderboard-row__rank">${formatRank(entry)}</div>
             <div class="leaderboard-row__main">
               <div class="leaderboard-row__top">
                 <h3 class="leaderboard-row__name">${escapeHtml(entry.name)}</h3>
-                <div class="leaderboard-row__score">${formatScore(entry.score)}</div>
+                <div class="leaderboard-row__score">${entry.score > 0 ? formatScore(entry.score) : "--"}</div>
               </div>
               <div class="leaderboard-row__meta">
                 <span>${escapeHtml(detail)}</span>
-                <span>${Math.round((entry.score / topScore) * 100)}% of leader</span>
+                <span>${entry.score > 0 ? `${leaderPercent}% of leader` : "--"}</span>
               </div>
               <div class="leaderboard-row__bar">
                 <span style="width: ${Math.min(progress, 100)}%"></span>
@@ -1169,15 +1038,10 @@
 
     function renderStats(entries) {
       const leader = entries[0];
-      const total = entries.reduce((sum, entry) => sum + entry.score, 0);
       const refreshLabel = CONFIG.autoRefreshMs > 0
         ? `Auto-updates every ${formatRefreshInterval(CONFIG.autoRefreshMs)}`
         : "Manual refresh";
 
-      elements.leaderName.textContent = leader ? leader.name : "-";
-      elements.totalScore.textContent = formatScore(total);
-      elements.entrantCount.textContent = String(entries.length);
-      elements.lastUpdated.textContent = formatDateTime(new Date());
       elements.dataSourceLabel.textContent = `${state.sourceLabel} · ${refreshLabel}`;
       elements.podiumStatus.textContent = leader
         ? `${leader.name} is currently in first place.`
@@ -1186,7 +1050,7 @@
 
     function render(entries) {
       state.entries = entries;
-      renderPodium(entries.slice(0, 3));
+      renderPodium(entries.filter((entry) => entry.score > 0).slice(0, 3));
       renderLeaderboard(entries);
       renderStats(entries);
     }
